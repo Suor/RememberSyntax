@@ -2,42 +2,37 @@ import sublime
 import sublime_plugin
 
 SETTINGS_FILE = "RememberSyntax.sublime-settings"
-_tracked = {}  # view_id -> last known syntax path
+_saved = {}  # file_path -> syntax_path, in-memory mirror of settings["saved"]
+
 
 def plugin_loaded():
-    # Ensure settings are loaded
-    sublime.load_settings(SETTINGS_FILE)
+    settings = sublime.load_settings(SETTINGS_FILE)
+    _saved.update(settings.get("saved", {}))
+
+    listener = RememberSyntaxListener()
+    for window in sublime.windows():
+        for view in window.views():
+            listener.on_load_async(view)
+
 
 class RememberSyntaxListener(sublime_plugin.EventListener):
-    def on_load_async(self, view):
+    def on_load(self, view):
         path = view.file_name()
         if not path:
             return
-        settings = sublime.load_settings(SETTINGS_FILE)
-        saved = settings.get("saved", {}).get(path)
+        saved = _saved.get(path)
         if saved:
             view.assign_syntax(saved)
-        # Track current syntax and listen for changes
         view.settings().add_on_change("remember_syntax", lambda: self._check(view))
 
     def _check(self, view):
         path = view.file_name()
-        if not path:
-            return
         syntax = view.syntax()
-        if not syntax:
-            return
-        vid = view.id()
-        current = syntax.path
-        if _tracked.get(vid) != current:
-            _tracked[vid] = current
+        if path and syntax and _saved.get(path) != syntax.path:
+            _saved[path] = syntax.path
             settings = sublime.load_settings(SETTINGS_FILE)
-            saved = settings.get("saved", {})
-            saved[path] = current
-            settings.set("saved", saved)
+            settings.set("saved", _saved)
             sublime.save_settings(SETTINGS_FILE)
 
     def on_close(self, view):
-        vid = view.id()
-        _tracked.pop(vid, None)
         view.settings().clear_on_change("remember_syntax")
