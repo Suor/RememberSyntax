@@ -1,4 +1,4 @@
-# Remember Syntax
+# RememberSyntax
 
 Remember syntax selected for a file in Sublime Text and restore it when the file
 is opened again.
@@ -11,7 +11,7 @@ You can also define filename rules in `RememberSyntax.sublime-settings`:
 ```js
 {
     "rules": [
-        {"pattern": ".aliases", "syntax":"Packages/ShellScript/Bash.sublime-syntax"},
+        {"pattern": ".aliases", "syntax": "Packages/ShellScript/Bash.sublime-syntax"},
         {"pattern": "service.*", "syntax": "Packages/INI/INI.sublime-syntax"},
         {"pattern": "Dockerfile.*", "syntax": "Packages/Dockerfile Syntax Highlighting/Dockerfile.sublime-syntax"}
     ]

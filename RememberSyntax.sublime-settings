@@ -2,8 +2,9 @@
     // Pattern-based syntax rules. Applied on file open if no per-file saved syntax exists.
     // Patterns match against the filename (basename only), using fnmatch glob syntax.
     // "rules": [
+    //     {"pattern": ".aliases", "syntax": "Packages/ShellScript/Bash.sublime-syntax"},
     //     {"pattern": "service.*", "syntax": "Packages/INI/INI.sublime-syntax"},
-    //     {"pattern": "http_proxy", "syntax": "Packages/INI/INI.sublime-syntax"}
+    //     {"pattern": "Dockerfile.*", "syntax": "Packages/Dockerfile Syntax Highlighting/Dockerfile.sublime-syntax"}
     // ],
 
     // Per-file saved syntaxes (managed automatically, do not edit manually).
