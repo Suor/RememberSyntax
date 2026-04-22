@@ -12,7 +12,7 @@ You can also define filename rules in `RememberSyntax.sublime-settings`:
 {
     "rules": [
         {"pattern": "service.*", "syntax": "Packages/INI/INI.sublime-syntax"},
-        {"pattern": "http_proxy", "syntax": "Packages/INI/INI.sublime-syntax"}
+        {"pattern": "Dockerfile.*", "syntax": "Packages/Dockerfile Syntax Highlighting/Dockerfile.sublime-syntax"}
     ]
 }
 ```
@@ -22,4 +22,3 @@ Rules match against basename only and use Python `fnmatch` glob syntax.
 When you manually change syntax for an opened file, the plugin saves that choice
 under `saved` in its settings and uses it next time. Per-file saved syntax wins
 over pattern rules.
-
