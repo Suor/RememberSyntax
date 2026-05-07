@@ -15,7 +15,8 @@
                                 "command": "edit_settings",
                                 "args": {
                                     "base_file": "${packages}/RememberSyntax/RememberSyntax.sublime-settings",
-                                    "user_file": "${packages}/User/RememberSyntax.sublime-settings"
+                                    "user_file": "${packages}/User/RememberSyntax.sublime-settings",
+                                    "default": "{\n    $0\n}\n"
                                 }
                             }
                         ]
