@@ -1,4 +1,8 @@
+1.0.1
+
+- Use canonical Preferences: RememberSyntax Settings command caption.
+- Add BSD 2-Clause license.
+
 1.0.0
 
 - Initial Package Control release.
-
