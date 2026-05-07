@@ -1,6 +1,6 @@
 [
     {
-        "caption": "RememberSyntax: Settings",
+        "caption": "Preferences: RememberSyntax Settings",
         "command": "edit_settings",
         "args": {
             "base_file": "${packages}/RememberSyntax/RememberSyntax.sublime-settings",
